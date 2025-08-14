@@ -39,7 +39,9 @@ SELECT
   COUNTIF(liveness__ IS NULL)AS liveness__,
   COUNTIF(speechiness__ IS NULL)AS speechiness__,
 FROM
-  `my-project-laboratoria.dadoslaboratoria.track_technical_info_technical_info` -------------Substituição dos nulos E criando VIEW da technical info
+  `my-project-laboratoria.dadoslaboratoria.track_technical_info_technical_info` 
+
+-------------Substituição dos nulos E criando VIEW da technical info
 CREATE OR REPLACE VIEW
   `my-project-laboratoria.dadoslaboratoria.track_technical_info_view` AS
 SELECT
@@ -55,7 +57,9 @@ SELECT
   liveness__,
   speechiness__
 FROM
-  `my-project-laboratoria.dadoslaboratoria.track_technical_info_technical_info` ---- CRIANDO VIEW DA COMPETITION
+  `my-project-laboratoria.dadoslaboratoria.track_technical_info_technical_info` 
+
+---- CRIANDO VIEW DA COMPETITION
 CREATE OR REPLACE VIEW
   `my-project-laboratoria.dadoslaboratoria.track_in_competition_view` AS
 SELECT
@@ -66,7 +70,9 @@ SELECT
   in_deezer_charts,
   IFNULL(in_shazam_charts, 0) AS in_shazam_charts
 FROM
-  `my-project-laboratoria.dadoslaboratoria.track_in_competition_competition` --- Verificando duplicatas de track_id dentro de cada tabela ----duplicatas -- Para a tabela Trackinspotify
+  `my-project-laboratoria.dadoslaboratoria.track_in_competition_competition` 
+  
+--- Verificando duplicatas de track_id dentro de cada tabela 
 SELECT
   track_id,
   COUNT(*) AS quantidade
@@ -93,7 +99,9 @@ FROM
 GROUP BY
   track_id
 HAVING
-  COUNT(*) > 1; ---VALORES DUPLICADOS
+  COUNT(*) > 1; 
+  
+----duplicatas -- Para a tabela Trackinspotify
 SELECT
   track_name,
   `artist_s__name`,
@@ -115,14 +123,18 @@ SELECT
   * EXCEPT(KEY,
     mode)
 FROM
-  `my-project-laboratoria.dadoslaboratoria.track_technical_info_technical_info` ------------- corrigindo a VIEW sem AS colunas que são fora DO escopo
+  `my-project-laboratoria.dadoslaboratoria.track_technical_info_technical_info` 
+  
+------------- corrigindo a VIEW sem AS colunas que são fora DO escopo
 CREATE OR REPLACE VIEW
   `my-project-laboratoria.dadoslaboratoria.track_technical_info` AS
 SELECT
   * EXCEPT (KEY,
     mode)
 FROM
-  `my-project-laboratoria.dadoslaboratoria.track_technical_info_technical_info`; -- Para corrigir durante uma consulta
+  `my-project-laboratoria.dadoslaboratoria.track_technical_info_technical_info`; 
+
+-- Para corrigir durante uma consulta  
 SELECT
   track_name,
   artist_s_name,
@@ -154,7 +166,7 @@ SELECT
 FROM
   `my-project-laboratoria.dadoslaboratoria.track_in_spotify - spotify`
 
--------------------- voltei para tratar os duplicados na view de spotify, removendo as linhas da consulta  
+--voltei para tratar os duplicados na view de spotify, removendo as linhas da consulta  
 
 SELECT
   track_name,
