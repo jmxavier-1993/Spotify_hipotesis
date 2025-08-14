@@ -306,4 +306,5 @@ Teste não paramétrico: <https://www.inf.ufsc.br/~vera.carmo/Testes_de_Hipotese
 📊📈**Dashboard**
 
 ![image](https://github.com/jmxavier-1993/Spotify_hipotesis/blob/main/Img_dash/Captura%20de%20tela%202025-08-14%20003119.png)
+
 ![image](https://github.com/jmxavier-1993/Spotify_hipotesis/blob/main/Img_dash/Captura%20de%20tela%202025-08-14%20003205.png)

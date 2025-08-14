@@ -1,0 +1,16 @@
+SELECT
+min(in_apple_playlists),
+max(in_apple_playlists),
+avg(in_apple_playlists)
+FROM
+  `my-project-laboratoria.dadoslaboratoria.track_in_competition_view`
+LIMIT
+  1000
+SELECT
+min(in_deezer_playlists),
+max(in_deezer_playlists),
+avg(in_deezer_playlists)
+FROM
+  `my-project-laboratoria.dadoslaboratoria.track_in_competition_view`
+LIMIT
+  1000
