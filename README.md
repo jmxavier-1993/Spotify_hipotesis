@@ -140,7 +140,7 @@ Essa categorização nos permitiu analisar as características das músicas de f
 Para uma análise mais simplificada e interpretável, decidimos segmentar os dados em 4 categorias distintas, denominadas "Alta", "Baixa", "Médio-alto" e "Médio baixo", para os quartis das variáveis que representam as características das músicas. Essa segmentação nos permitiu agrupar os valores dos quartis de maneira mais intuitiva, facilitando a comparação e interpretação dos resultados.
 
 **Metodologia de Segmentação:**
-Utilizamos uma abordagem baseada em regras simples para atribuir os valores dos quartis às categorias "Alta", "Baixa", "Médio-alto" e "Médio baixo". Os valores 1 "Alta", 2 "Médio-alto", 3 "Médio baixo", e 4 foram agrupados na categoria "Baixa". Para realizar essa segmentação, empregamos o comando case when para criar uma lógica de classificação e agregamos os resultados por meio do comando JOIN.
+Utilizamos uma abordagem baseada em regras simples para atribuir os valores dos quartis às categorias "Alta", "Baixa", "Médio-alto" e "Médio baixo". Os valores 1 "Baixa", 2 "Médio baixo", 3 "Médio-alto", e 4 foram agrupados na categoria "Alta". Para realizar essa segmentação, empregamos o comando case when para criar uma lógica de classificação e agregamos os resultados por meio do comando JOIN.
 
 **Criação de Tabelas Matrizes:**
 Para avaliar o comportamento das variáveis das características das músicas em relação ao número médio de streams, criamos tabelas matriz para cada uma das variáveis. Essas tabelas permitiram verificar o valor médio de streams para cada uma das duas categorias criadas (alta e baixa) em relação a cada variável.
