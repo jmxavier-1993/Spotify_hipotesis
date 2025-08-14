@@ -67,7 +67,7 @@ A primeira fase deste projeto consistiu na importação das bases de dados para 
 <summary><b> Limpeza dos dados</b></summary>
 
 **Dados Nulos:**
-Para identificar e tratar valores nulos no BigQuery, foram empregados comandos SQL, incluindo SELECT, FROM, WHERE e IS NULL, para localizar os valores nulos dentro de cada uma das variáveis das tabelas. Durante a análise, constatou-se a presença de 50 valores nulos na variável "in_shazam_charts" e 95 valores nulos na variável "key". Para abordar os valores nulos na variável "in_shazam_charts", optou-se por utilizar o valor da mediana para preenchê-los, uma vez que esse método resultou em uma variação mínima na média dos dados. Essa estratégia de tratamento foi escolhida para preservar a integridade e a representatividade dos dados, garantindo a qualidade da análise subsequente.
+Para identificar e tratar valores nulos no BigQuery, foram empregados comandos SQL, incluindo SELECT, FROM, WHERE e IS NULL, para localizar os valores nulos dentro de cada uma das variáveis das tabelas. Durante a análise, constatou-se a presença de 50 valores nulos na variável "in_shazam_charts" e 95 valores nulos na variável "key". Para abordar os valores nulos na variável "in_shazam_charts", optou-se por utilizar o valor da zero para preenchê-los, uma vez que esse método resultou em uma variação mínima na média dos dados. Essa estratégia de tratamento foi escolhida para preservar a integridade e a representatividade dos dados, garantindo a qualidade da análise subsequente.
 
 **Dados Duplicados:**
 Para identificar e tratar valores duplicados no BigQuery, foram utilizados os comandos SQL COUNT, GROUP BY e HAVING. Durante a análise, foram identificados 8 valores duplicados para a variável "track_name"& "artist_name". Para lidar com essa duplicidade, foram removidos os 8 valores duplicados, garantindo a integridade e a consistência dos dados. Essa abordagem foi adotada para assegurar a precisão e a confiabilidade da análise subsequente, evitando distorções nos resultados devido a entradas duplicadas.
@@ -85,13 +85,13 @@ A variável "streams", que originalmente estava no formato de string, foi conver
 **Criação de novas variáveis:**
 Através dos comandos CONCAT, CAST e JOIN, foram criadas as seguintes variáveis:
 
-* "release_date_concat": Esta variável foi criada com o propósito de combinar três variáveis: *"released_year", "released_month" e "released_day", formando uma única data que representa o ano, mês e dia de lançamento de uma música.
+* "release_date": Esta variável foi criada com o propósito de combinar três variáveis: *"released_year", "released_month" e "released_day", formando uma única data que representa o ano, mês e dia de lançamento de uma música.
 
 * "soma_playlists": Esta variável representa a soma de uma música em playlists do Spotify, Deezer e Apple, sendo criada através da concatenação das variáveis "in_spotify_playlists", "in_apple_playlists" e "in_deezer_playlists".
 
 Obs: Não consideramos o Shazam, pois se trata de um aplicativo que identifica o nome da música que está tocando no ambiente, ele é útil para quem não conhece ou se esqueceu do nome da canção reproduzida.
 
-* "count_music_artosolo": Esta variável foi criada para representar a quantidade de músicas por artista solo. Para sua criação, foram utilizados os comandos SQL WITH, COUNT e GROUP BY.
+* "artistas_agrupados": Esta tabela foi criada para representar a quantidade de músicas por artista solo. Para sua criação, foram utilizados os comandos SQL WITH, COUNT e GROUP BY.
 
 Essas variáveis foram criadas utilizando uma combinação de funções e comandos SQL para agregar e manipular os dados de forma significativa, proporcionando insights valiosos para análises posteriores.
 
@@ -137,15 +137,15 @@ Essa categorização nos permitiu analisar as características das músicas de f
 <details>
 <summary><b> Segmentação de Dados por Quartis </b></summary>
   
-Para uma análise mais simplificada e interpretável, decidimos segmentar os dados em duas categorias distintas, denominadas "alta" e "baixa", para os quartis das variáveis que representam as características das músicas. Essa segmentação nos permitiu agrupar os valores dos quartis de maneira mais intuitiva, facilitando a comparação e interpretação dos resultados.
+Para uma análise mais simplificada e interpretável, decidimos segmentar os dados em 4 categorias distintas, denominadas "Alta", "Baixa", "Médio-alto" e "Médio baixo", para os quartis das variáveis que representam as características das músicas. Essa segmentação nos permitiu agrupar os valores dos quartis de maneira mais intuitiva, facilitando a comparação e interpretação dos resultados.
 
 **Metodologia de Segmentação:**
-Utilizamos uma abordagem baseada em regras simples para atribuir os valores dos quartis às categorias "alta" e "baixa". Os valores 1 e 2 foram agrupados na categoria "baixa", enquanto os valores 3 e 4 foram agrupados na categoria "alta". Para realizar essa segmentação, empregamos o comando IF para criar uma lógica de classificação e agregamos os resultados por meio do comando JOIN.
+Utilizamos uma abordagem baseada em regras simples para atribuir os valores dos quartis às categorias "Alta", "Baixa", "Médio-alto" e "Médio baixo". Os valores 1 "Alta", 2 "Médio-alto", 3 "Médio baixo", e 4 foram agrupados na categoria "Baixa". Para realizar essa segmentação, empregamos o comando case when para criar uma lógica de classificação e agregamos os resultados por meio do comando JOIN.
 
 **Criação de Tabelas Matrizes:**
 Para avaliar o comportamento das variáveis das características das músicas em relação ao número médio de streams, criamos tabelas matriz para cada uma das variáveis. Essas tabelas permitiram verificar o valor médio de streams para cada uma das duas categorias criadas (alta e baixa) em relação a cada variável.
 
-Ao final, foi criada uma nova tabela utilizando o comando CREATE TABLE chamada “dados_spotify_categorizados".
+Ao final, foi criada uma nova tabela utilizando o comando CREATE TABLE chamada “dadoslaboratoria.view_unificada_com_quartis".
 
 </details>
 
