@@ -87,7 +87,7 @@ Através dos comandos CONCAT, CAST e JOIN, foram criadas as seguintes variáveis
 
 * "release_date": Esta variável foi criada com o propósito de combinar três variáveis: *"released_year", "released_month" e "released_day", formando uma única data que representa o ano, mês e dia de lançamento de uma música.
 
-* "soma_playlists": Esta variável representa a soma de uma música em playlists do Spotify, Deezer e Apple, sendo criada através da concatenação das variáveis "in_spotify_playlists", "in_apple_playlists" e "in_deezer_playlists".
+* "total_playlists": Esta variável representa a soma de uma música em playlists do Spotify, Deezer e Apple, sendo criada através da concatenação das variáveis "in_spotify_playlists", "in_apple_playlists" e "in_deezer_playlists".
 
 Obs: Não consideramos o Shazam, pois se trata de um aplicativo que identifica o nome da música que está tocando no ambiente, ele é útil para quem não conhece ou se esqueceu do nome da canção reproduzida.
 
@@ -217,6 +217,12 @@ A suposição inicial de que músicas com um maior número de batidas por minuto
 **Teste de Correlação:**
 O coeficiente de correlação entre as variáveis "bpm" e "streams" foi calculado como -0.0009, indicando uma correlação negativa muito fraca entre elas. Esse valor sugere que não há uma associação significativa entre o BPM e o número de streams das músicas.
 
+**Teste de Significância (Mann-Whitney):**
+Ao analisar as categorias "alta" e "baixa" da variável "bpm" em relação ao número de streams, não foi encontrada diferença significativa entre elas. Isso indica que o BPM não parece influenciar de forma significativa o número de streams das músicas.
+
+**Teste de Regressão Linear:**
+O teste de regressão linear apresentou um valor de p = 0.944 para a variável independente "bpm". Esse valor elevado de p indica que o BPM não é estatisticamente significativo para prever os streams. Em outras palavras, o BPM não é um bom preditor do número de streams das músicas.
+
 **Conclusão Geral:**
 Com base nos resultados desses testes estatísticos, não encontramos evidências estatísticas que sustentem a ideia de uma relação significativa entre as variáveis "bpm" e "streams". Portanto, não podemos afirmar que o BPM das músicas influencia diretamente o número de streams no Spotify. Outros fatores podem ter um papel mais significativo na popularidade e no sucesso das músicas na plataforma.
 
@@ -230,6 +236,9 @@ Os testes realizados confirmaram a hipótese inicial de que as músicas mais pop
 **Teste de Correlação:**
 As correlações entre o ranking do Spotify e as plataformas Deezer e Apple foram calculadas como 0.5998 e 0.5519, respectivamente. Esses valores indicam uma correlação positiva entre as plataformas, sugerindo que as músicas populares no Spotify tendem a ter um desempenho semelhante nas plataformas Deezer e Apple.
 
+**Teste de Regressão Linear:**
+As regressões aplicadas apresentaram valores de p < 0.05, o que indica que há uma evidência estatisticamente significativa para a relação entre as músicas populares no ranking do Spotify e seu desempenho nas plataformas Deezer e Apple. Em outras palavras, as músicas que são populares no Spotify têm uma associação estatisticamente significativa com as plataformas Deezer e Apple.
+
 **Conclusão Geral:**
 Com base nos resultados desses testes estatísticos, podemos concluir que há uma associação estatisticamente significativa entre a popularidade das músicas no ranking do Spotify e seu desempenho nas plataformas Deezer e Apple. Portanto, a hipótese de que as músicas mais populares no Spotify também são populares nas plataformas Deezer e Apple foi validada. Isso sugere que o sucesso de uma música em uma plataforma de streaming pode influenciar seu desempenho em outras plataformas, indicando uma tendência geral no comportamento dos usuários.
 </details>
@@ -240,6 +249,9 @@ Os testes realizados confirmaram a hipótese de que a presença de uma música e
 
 **Teste de Correlação:**
 Após análises, verificou-se uma correlação positiva entre a presença de uma música em playlists e o número de streams, com um valor de p = 0.7835. Esse resultado indica que há uma correlação significativa entre as duas variáveis, confirmando a hipótese de que uma maior presença em playlists está associada a um aumento no número de streams.
+
+**Teste de Regressão Linear:**
+O teste de regressão revelou um R-quadrado de 0.625, o que significa que aproximadamente 62.5% da variabilidade nos streams pode ser explicada pela presença de uma música em playlists. Esse valor indica uma relação moderadamente forte entre as variáveis e sugere que a presença em playlists é um fator significativo na determinação do número de streams de uma música.
 
 **Conclusão Geral:**
 Com base nos resultados dos testes estatísticos, pode-se concluir que há uma relação significativa entre a presença de uma música em playlists e o aumento no número de streams. Isso confirma a importância das playlists como impulsionadores de sucesso para as músicas no ambiente de streaming. Portanto, a hipótese de que a presença em playlists está correlacionada com o número de streams foi validada.
@@ -254,6 +266,9 @@ Os resultados da análise indicam uma correlação positiva e significativa entr
 **Teste de Correlação:**
 Foi observada uma correlação positiva entre o número de músicas de um artista e o total de streams no Spotify, com um valor de p = 0.83. Esse resultado sugere uma associação significativa entre as duas variáveis, apoiando a hipótese de que um maior catálogo de músicas está relacionado a um aumento nos streams.
 
+**Teste de Regressão Linear:**
+O teste de regressão linear apresentou um R-quadrado de 0.606, indicando que aproximadamente 60.6% da variação nos streams pode ser explicada pelo número de músicas de um artista no Spotify. Esse valor aponta para uma relação positiva e substancial entre as variáveis, evidenciando que um aumento no número de faixas está associado a um aumento significativo na quantidade de streams.
+
 **Conclusão Geral:**
 Com base nos resultados dos testes estatísticos, podemos concluir que existe uma relação estatisticamente significativa entre o número de músicas de um artista e o total de streams no Spotify. Isso destaca a importância da disponibilidade do catálogo de um artista para o sucesso na plataforma de streaming. Portanto, a hipótese de que o número de faixas de um artista está relacionado ao número de streams foi validada.
 
@@ -266,6 +281,12 @@ Após análise, concluiu-se que as características das músicas têm impacto va
 
 **Teste de Correlação:**
 Observou-se uma correlação negativa muito fraca entre todas as características das músicas e o número de streams no Spotify, com valores próximos de zero. Isso sugere uma relação mínima ou inexistente entre essas variáveis.
+
+**Teste de Significância:**
+Apenas a variável "speechiness" apresentou diferença significativa entre suas categorias e o número de streams. Isso indica que o conteúdo falado na música tem alguma influência no número de streams, mas as outras características não demonstraram uma diferença significativa.
+
+**Teste de Regressão Linear:**
+A análise de regressão linear mostrou que algumas características da música, como "danceability" e "speechiness", têm uma influência significativa no número de streams. No entanto, outras características, como "valence", "energy", "acousticness", "instrumentalness" e "liveness", não apresentaram uma relação estatisticamente significativa com os streams.
 
 **Conclusão Geral:**
 Considerando os resultados dos testes estatísticos e a análise dos coeficientes de regressão, optou-se por refutar a hipótese de que as características das músicas influenciam o sucesso em termos de número de streams no Spotify. Embora algumas características, como "danceability" e "speechiness", pareçam ter impacto significativo, outras não demonstraram uma associação clara com o número de streams. Portanto, a influência das características musicais no sucesso das músicas em termos de streams no Spotify não pode ser generalizada, e a relação entre essas variáveis é mais complexa do que inicialmente previsto.
